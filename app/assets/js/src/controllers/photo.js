@@ -16,9 +16,10 @@ appotato.controller('PhotoController', function PhotoController($scope, $route, 
 			angular.forEach(data.sizes.size, function(item, index) {
 				if('Small' == item.label)
 					$scope.photo['thumb'] = item.source;
-				/*
+				if('Medium' == item.label)
+					$scope.photo['thumb'] = item.source;
 				if('Original' == item.label)
-					$scope.photo['thumb'] = item.source; */
+					$scope.photo['thumb'] = item.source;
 			})
 		});
 

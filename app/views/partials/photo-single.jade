@@ -9,7 +9,7 @@ div(id="photo-single-content", class="section", data-body-id="")
 			div.meta
 				p <i class="fa fa-user"></i> <a href="//www.flickr.com/photos/{[ photo.owner.nsid ]}" class="profile-link" target="_blank">{[ photo.owner.username ]}</a>
 				p.sr &bull;
-				p <i class="fa fa-clock-o"></i>&nbsp;{[ photo.dates.posted | timestampFormat ]}
+				p <i class="fa fa-clock-o"></i>&nbsp;{[ photo.dates.posted | dateFormat: 'timestamp' ]}
 				p.sr &bull;
 				p(data-ng-show="photo.location") <i class="fa fa-map-marker"></i>&nbsp;<a href="//maps.google.com/maps?z=12&t=m&q=loc:{[ photo.location.latitude ]}+{[ photo.location.longitude ]}" target="_blank">{[ photo.location.locality._content ]}</a>
 				p(data-ng-show="!photo.location") <i class="fa fa-map-marker"></i>&nbsp;no location info

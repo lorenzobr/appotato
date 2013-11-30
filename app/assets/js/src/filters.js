@@ -20,21 +20,15 @@ angular.module('filters', [])
         }
     })
     .filter('dateFormat', function() {
-        return function(date) 
+        return function (date, format) 
         {
             if(undefined == date)
                 return;
 
-            return moment(date).format('Do MMM YYYY [at] h:mm a');
-        }
-    })
-    .filter('timestampFormat', function() {
-        return function(timestamp) 
-        {
-            if(undefined == timestamp)
-                return;
+            if('timestamp' == format)
+                return moment.unix(date).format('Do MMM YYYY [at] h:mm a');
 
-            return moment.unix(timestamp).format('Do MMM YYYY [at] h:mm a');
+            return moment(date).format('Do MMM YYYY [at] h:mm a');
         }
     })
     .filter('getPhotoID', function() {

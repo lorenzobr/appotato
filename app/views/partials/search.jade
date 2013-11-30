@@ -7,12 +7,12 @@ div(id="search-content", class="section", data-body-id="", data-infinite-scroll=
 			div.entry-content.col-md-9
 				header
 					h1: a(href="#/photo/{[ item.id ]}") 
-						span(data-ng-show="item.title.trim().length != 0") {[ item.title | truncate: 140 ]}
+						span(data-ng-show="item.title.trim().length != 0") {[ item.title | truncate: 55 ]}
 						span(data-ng-show="item.title.trim().length < 1") Untitled
-					p.datetime <i class="fa fa-clock-o"></i>&nbsp;{[ item.published | dateFormat ]}
+					p.datetime <i class="fa fa-clock-o"></i>&nbsp;{[ item.dateupload | dateFormat: 'timestamp' ]}
 				footer.entry-meta
 					p.flickr-author: <i class="fa fa-user"></i>&nbsp;<a href="//flickr.com/photos/{[ item.owner ]}", target="_blank">Author profile</a>
-					p.datetime <i class="fa fa-clock-o"></i>&nbsp;{[ item.dateupload | timestampFormat ]}
+					p.datetime <i class="fa fa-clock-o"></i>&nbsp;{[ item.dateupload | dateFormat: 'timestamp' ]}
 					p.flickr-link <i class="fa fa-flickr"></i>&nbsp;<a href="//flickr.com/photos/{[ item.pathalias ]}/{[ item.id ]}", target="_blank"> View on Flickr</a>
 					div.clear
 					ul(id="tags-list", class="tags")
