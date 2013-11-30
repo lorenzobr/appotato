@@ -1,0 +1,25 @@
+div(id="search-content", class="section", data-body-id="", data-infinite-scroll="loadMore()")
+	ul(class="entries")
+		li(id="{[ item.id ]}", class="row entry", data-ng-repeat="item in search")
+			div.pic.col-md-3
+				img(data-ng-src="{[ item.url_q]}", data-ng-show="undefined == item.url_z")	
+				img(data-ng-src="{[ item.url_z]}", data-ng-show="undefined != item.url_z")
+			div.entry-content.col-md-9
+				header
+					h1: a(href="#/photo/{[ item.id ]}") 
+						span(data-ng-show="item.title.trim().length != 0") {[ item.title | truncate: 140 ]}
+						span(data-ng-show="item.title.trim().length < 1") Untitled
+					p.datetime <i class="fa fa-clock-o"></i>&nbsp;{[ item.published | dateFormat ]}
+				footer.entry-meta
+					p.flickr-author: <i class="fa fa-user"></i>&nbsp;<a href="//flickr.com/photos/{[ item.owner ]}", target="_blank">Author profile</a>
+					p.datetime <i class="fa fa-clock-o"></i>&nbsp;{[ item.dateupload | timestampFormat ]}
+					p.flickr-link <i class="fa fa-flickr"></i>&nbsp;<a href="//flickr.com/photos/{[ item.pathalias ]}/{[ item.id ]}", target="_blank"> View on Flickr</a>
+					div.clear
+					ul(id="tags-list", class="tags")
+						li.list-label: <i class="fa fa-tags"></i> 
+						li(class="tag", data-ng-repeat="tag in (item.tags | getFeedTags)")
+							a(href="#/search/{[ tag ]}", data-ng-show="tag != '[+more+]'") {[ tag ]}
+							a(href="#/photo/{[ item.link | getPhotoID ]}", class="more-link", data-ng-show="tag == '[+more+]'") &raquo;
+	div(class="scroll-loader")
+		i(class="fa fa-spinner fa-spin")
+	

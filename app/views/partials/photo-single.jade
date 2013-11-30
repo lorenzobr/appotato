@@ -1,0 +1,31 @@
+div(id="photo-single-content", class="section", data-body-id="")
+	article(id="{[ photo.id ]}", class="photo")
+		header
+			a(href="/", class="mobile-back-btn btn btn-primary visible-xs") <i class="fa fa-chevron-circle-left"></i> back to the feed
+			div.row
+				h1.col-md-9 {[ photo.title._content ]}
+				nav.col-md-3.hidden-xs
+					a(href="/", class="btn btn-primary") <i class="fa fa-chevron-circle-left"></i> back to the feed
+			div.meta
+				p <i class="fa fa-user"></i> <a href="//www.flickr.com/photos/{[ photo.owner.nsid ]}" class="profile-link" target="_blank">{[ photo.owner.username ]}</a>
+				p.sr &bull;
+				p <i class="fa fa-clock-o"></i>&nbsp;{[ photo.dates.posted | timestampFormat ]}
+				p.sr &bull;
+				p(data-ng-show="photo.location") <i class="fa fa-map-marker"></i>&nbsp;<a href="//maps.google.com/maps?z=12&t=m&q=loc:{[ photo.location.latitude ]}+{[ photo.location.longitude ]}" target="_blank">{[ photo.location.locality._content ]}</a>
+				p(data-ng-show="!photo.location") <i class="fa fa-map-marker"></i>&nbsp;no location info
+		div.entry-content.row
+			div.col-md-4
+				img(data-ng-src="{[ photo.thumb ]}")
+			div.col-md-8
+				h4 <i class="fa fa-align-right"></i>&nbsp;description
+				p(class="description", data-ng-show="photo.description._content.trim().length != 0") {[ photo.description._content ]}
+				p(class="description", data-ng-show="photo.description._content.trim().length < 1") This photo does not have a description yet.
+		div(id="tags-panel", class="entry-tags panel-group")
+			div(class="panel")
+				div(class="panel-heading")
+					a(href="#panel-tags-list", data-toggle="collapse", data-parent="tags-panel") toggle tags list <i class="fa fa-tags"></i>
+				div(id="panel-tags-list", class="panel-collpase collapse")
+					ul(id="tags-list", class="tags")
+						li(class="tag", data-ng-repeat="tag in photo.tags.tag")
+							a(href="#/search/{[ tag.raw ]}") {[ tag.raw ]}
+
