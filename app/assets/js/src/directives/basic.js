@@ -23,10 +23,13 @@ appotato.directive('infiniteScroll', function() {
 	{
 		$(window).scroll(function() {
 			var pos = $(window).scrollTop() + $(window).height() > $(document).height();
-			if(pos && scope.loaded) {
+			if(pos && scope.loaded && scope.loaded != 'completed') {
 				scope.page ++;
 				scope.$apply(attr.infiniteScroll);
 			}
+
+			if('completed' == scope.loaded)
+				$('.scroll-loader').hide();
 		});
 	}
 })
