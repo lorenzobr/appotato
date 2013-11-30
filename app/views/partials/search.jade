@@ -1,7 +1,7 @@
 div(id="search-content", class="section", data-body-id="", data-infinite-scroll="loadMore()")
 	ul(class="entries")
 		li(id="{[ item.id ]}", class="row entry", data-ng-repeat="item in search")
-			div.pic.col-md-3
+			div.pic.col-md-3: a(href="#/photo/{[ item.id ]}")
 				img(data-ng-src="{[ item.url_q]}", data-ng-show="undefined == item.url_z")	
 				img(data-ng-src="{[ item.url_z]}", data-ng-show="undefined != item.url_z")
 			div.entry-content.col-md-9

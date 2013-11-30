@@ -1,7 +1,7 @@
 div(id="feed-content", class="section", data-body-id="")
 	ul(class="entries")
 		li(id="{[ item.link | getPhotoID ]}", class="row entry", data-ng-repeat="item in feed.items")
-			div.pic.col-md-3
+			div.pic.col-md-3: a(href="#/photo/{[ item.link | getPhotoID ]}")
 				img(data-ng-src="{[ item.media.m ]}")
 			div.entry-content.col-md-9
 				header
