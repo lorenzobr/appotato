@@ -2,7 +2,9 @@
 	"name" : "appotato",
 	"version" : "1.0.0",
 	"private" : true,
-	"dependencies" : {},
+	"dependencies" : {
+        "express" : "*"
+    },
   	"devDependencies": {
     	"grunt": "~0.4.2",
     	"grunt-nodemon": "~0.1.2",
