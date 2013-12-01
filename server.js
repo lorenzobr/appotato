@@ -21,5 +21,5 @@ app.configure(function()
 /**
  * Application start
  */
-app.listen(config.listening_port);
+app.listen(process.env.PORT || config.listening_port);
 console.log('application: started and listening on port ' + config.listening_port);
