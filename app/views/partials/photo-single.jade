@@ -1,11 +1,11 @@
 div(id="photo-single-content", class="section", data-body-id="")
 	article(id="{[ photo.id ]}", class="photo")
 		header
-			a(href="/", class="mobile-back-btn btn btn-primary visible-xs") <i class="fa fa-chevron-circle-left"></i> back to the feed
+			a(href="{[ backPage ]}", class="mobile-back-btn btn btn-primary visible-xs") <i class="fa fa-chevron-circle-left"></i> back to the feed
 			div.row
 				h1.col-md-9 {[ photo.title._content ]}
 				nav.col-md-3.hidden-xs
-					a(href="/", class="btn btn-primary") <i class="fa fa-chevron-circle-left"></i> back to the feed
+					a(href="{[ backPage ]}", class="btn btn-primary") <i class="fa fa-chevron-circle-left"></i> back to the feed
 			div.meta
 				p <i class="fa fa-user"></i> <a href="//www.flickr.com/photos/{[ photo.owner.nsid ]}" class="profile-link" target="_blank">{[ photo.owner.username ]}</a>
 				p.sr &bull;

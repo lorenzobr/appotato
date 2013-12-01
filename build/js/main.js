@@ -70,6 +70,10 @@ angular.module('filters', [])
 		function($routeProvider) { 
 			$routeProvider
 				.when('/', {
+					templateUrl: 'partials/home.html',
+					controller: 'HomeController'
+				})
+				.when('/feed', {
 					templateUrl: 'partials/feed.html',
 					controller: 'FeedController'
 				})
@@ -133,6 +137,9 @@ appotato.directive('bodyId', function () {
     restrict: 'A',
     link: function (scope, element, attr) {
       scope.$watch('currentPage', function (value) {
+        if ('HomeController' == value) {
+          $('body').attr('id', 'home');
+        }
         if ('FeedController' == value) {
           $('body').attr('id', 'feed');
         }
@@ -173,9 +180,25 @@ appotato.controller('FeedController', function FeedController($scope, $route, $h
   };
   $scope.init();
 });
+appotato.controller('HomeController', function HomeController($scope, $route, $location) {
+  $scope.currentPage = $route.current.$$route.controller;
+  $scope.searchTag = function () {
+    var path = '/search/' + $scope.search.keyword;
+    $location.path(path);
+  };
+  $scope.goToFeed = function () {
+    $location.path('/feed');
+  };
+});
 appotato.controller('PhotoController', function PhotoController($scope, $route, $routeParams, $flickrapi) {
   $scope.currentPage = $route.current.$$route.controller;
+  $scope.backPage = '#feed';
   $scope.photo = [];
+  $scope.$on('$routeChangeSuccess', function (evt, newRoute, oldRoute) {
+    if ('SearchController' == oldRoute.$$route.controller) {
+      $scope.backPage = '#search/' + oldRoute.params.tag;
+    }
+  });
   $scope.load = function () {
     var photoID = $routeParams.photo_id;
     $flickrapi.get('flickr.photos.getInfo', 'photo_id=' + photoID).success(function (data) {

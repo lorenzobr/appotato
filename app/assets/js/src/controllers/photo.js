@@ -1,7 +1,14 @@
 appotato.controller('PhotoController', function PhotoController($scope, $route, $routeParams, $flickrapi) {
 	$scope.currentPage = $route.current.$$route.controller;
+	$scope.backPage = '#feed';
 
 	$scope.photo = [];
+
+	$scope.$on('$routeChangeSuccess',function(evt, newRoute, oldRoute) {
+   		if('SearchController' == oldRoute.$$route.controller) {
+   			$scope.backPage = '#search/' + oldRoute.params.tag;
+   		}
+	});
 
 	$scope.load = function() {
 		var photoID = $routeParams.photo_id;

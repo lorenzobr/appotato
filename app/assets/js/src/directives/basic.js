@@ -4,6 +4,9 @@ appotato.directive('bodyId', function() {
 		link: function(scope, element, attr) {
 			scope.$watch('currentPage', function(value) 
 			{
+				if('HomeController' == value) {
+					$('body').attr('id', 'home');
+				}
 				if('FeedController' == value) {
 					$('body').attr('id', 'feed');
 				}

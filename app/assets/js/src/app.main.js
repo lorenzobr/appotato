@@ -13,6 +13,10 @@
 		function($routeProvider) { 
 			$routeProvider
 				.when('/', {
+					templateUrl: 'partials/home.html',
+					controller: 'HomeController'
+				})
+				.when('/feed', {
 					templateUrl: 'partials/feed.html',
 					controller: 'FeedController'
 				})
