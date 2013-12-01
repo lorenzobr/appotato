@@ -22,7 +22,8 @@ appotato.directive('infiniteScroll', function() {
 	return function(scope, element, attr) 
 	{
 		$(window).scroll(function() {
-			var pos = $(window).scrollTop() + $(window).height() > $(document).height();
+			var bufferPX = 40;
+			var pos = $(window).scrollTop() + $(window).height() + bufferPX > $(document).height();
 			if(pos && scope.loaded && scope.loaded != 'completed') {
 				$('.scroll-loader').show();
 				scope.page ++;
