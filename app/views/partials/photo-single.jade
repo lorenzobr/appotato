@@ -20,6 +20,9 @@ div(id="photo-single-content", class="section", data-body-id="")
 				h4 <i class="fa fa-align-right"></i>&nbsp;description
 				p(class="description", data-ng-show="photo.description._content.trim().length != 0") {[ photo.description._content ]}
 				p(class="description", data-ng-show="photo.description._content.trim().length < 1") This photo does not have a description yet.
+				div(class="share-box")
+					div(class="g-plusone", data-size="medium", data-annotation="inline", data-width="300", data-href="{[ photo.thumb ]}")
+
 		div(id="tags-panel", class="entry-tags panel-group")
 			div(class="panel")
 				div(class="panel-heading")
@@ -28,4 +31,13 @@ div(id="photo-single-content", class="section", data-body-id="")
 					ul(id="tags-list", class="tags")
 						li(class="tag", data-ng-repeat="tag in photo.tags.tag")
 							a(href="#/search/{[ tag.raw ]}") {[ tag.raw ]}
+
+script.
+	window.___gcfg = {lang: 'en-GB'};
+
+	(function() {
+		var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+		po.src = 'https://apis.google.com/js/platform.js';
+		var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+	})();
 
